@@ -1,0 +1,10 @@
+
+@mixin media($screen)
+  @if ($screen == tablet)
+    @media (min-width:768px)
+      @content
+  @else if ($screen == wide)
+    @media (min-width:992px)
+      @content
+  @else
+    @error "this screen #{$screen} name is invalid"

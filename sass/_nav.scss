@@ -1,0 +1,86 @@
+@use "./helpers/_mixins.sass" as *;
+.nav {
+  grid-row: 1/-1;
+  box-shadow: 15px 16px  40px -32px rgba(0, 0, 0, 0.8);
+  min-height: 100vh;
+  .logo {
+    text-align: center;
+    font-size: .9rem;
+    position: relative;
+    margin: 0 {
+      bottom: 1.5em;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -0.25em;
+      transform: translateX(-50%);
+      background-color: var(--main-clr, #000);
+    }
+    &::before {
+      width: 1.8em;
+      height: 2px;
+    }
+    &::after {
+      width: 0.3em;
+      height: 0.3em;
+      box-shadow: 0 0 0 3px var(--bg-clr);
+      border-radius: 100%;
+      transform: translate(-50%, calc(50% - 1px));
+    }
+  }
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    li {
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 5px 0;
+      cursor: pointer;
+      overflow: hidden;
+      transition: var(--tran-d);
+      &:hover{
+        background-color: var(--gray);
+      }
+      .text {
+        display: none;
+      }
+    }
+    .icon-holder {
+      width: 25px;
+      height: 25px;
+      height: max-content;
+      overflow: hidden;
+      svg {
+        min-width: 100%;
+        max-width: 100%;
+        transition-duration: var(--tran-d);
+
+
+      }
+    }
+  }
+  // media quaries
+  @include media("tablet"){
+    .logo{
+      font-size: 1.5rem;
+    }
+    .nav-links{
+      li{
+        justify-content: flex-start;
+        .text {
+          display: block;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
