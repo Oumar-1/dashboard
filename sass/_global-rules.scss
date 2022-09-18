@@ -8,7 +8,7 @@
   --tran-d : 400ms
 }
 *{
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 body{
   background-color: var(--bg-clr);
@@ -22,6 +22,10 @@ body{
   @include media("tablet"){
     grid-template-columns: 130px 1fr;
   }
+  @include media("wide"){
+    grid-template-columns: 170px 1fr;
+  }
+
 }
 a {
   color: inhrit;

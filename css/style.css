@@ -25,6 +25,11 @@ body {
     grid-template-columns: 130px 1fr;
   }
 }
+@media (min-width: 992px) {
+  body {
+    grid-template-columns: 170px 1fr;
+  }
+}
 
 a {
   color: inhrit;
@@ -56,8 +61,7 @@ button {
   text-align: center;
   font-size: 0.9rem;
   position: relative;
-  margin: 0;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.3em;
 }
 .nav .logo::before, .nav .logo::after {
   content: "";
@@ -85,13 +89,14 @@ button {
   flex-direction: column;
 }
 .nav .nav-links li {
+  overflow: hidden;
+  box-sizing: content-box;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
-  padding: 5px 0;
+  padding-block: 5px;
   cursor: pointer;
-  overflow: hidden;
   transition: var(--tran-d);
 }
 .nav .nav-links li:hover {
@@ -117,6 +122,7 @@ button {
   }
   .nav .nav-links li {
     justify-content: flex-start;
+    padding-block: 10px;
   }
   .nav .nav-links li .text {
     display: block;
