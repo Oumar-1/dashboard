@@ -5,63 +5,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="autor" content="oumar" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>new Project</title>
+    <title>Dashboard</title>
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Style sheet -->
+    <!-- favicon -->
+    <link rel="shortcut icon" href="imgs/icons/favicon.ico" type="image/x-icon" />
+    <!-- Style sheets -->
+    <!-- normalize -->
     <link rel="stylesheet" href="css/normalize.css" />
+    <!-- my own freame work  -->
+    <link rel="stylesheet" href="css/utilities.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <nav class="nav p-10">
-      <h3 class="logo">Oumar</h3>
-      <ul class="nav-links">
-        <li data-nav-links id="dashboard">
+    <nav class="nav">
+      <h3 class="logo mb-0 mt-2">Oumar</h3>
+      <ul class="nav-links p-2 m-0">
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/dashboard"
+          ></div>
           <p class="text">Dashboard</p>
         </li>
-        <li data-nav-links id="settings">
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/settings"
+          ></div>
           <p class="text">Settings</p>
         </li>
-        <li data-nav-links id="profile">
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/profile"
+          ></div>
           <p class="text">Profile</p>
         </li>
-        <li data-nav-links id="projects">
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/projects"
+          ></div>
           <p class="text">Projects</p>
         </li>
-        <li data-nav-links id="courses">
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/courses"
+          ></div>
           <p class="text">Courses</p>
         </li>
-        <li data-nav-links id="friends">
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/friends"
+          ></div>
           <p class="text">Friends</p>
         </li>
-        <li data-nav-links id="files">
+
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/files"
+          ></div>
           <p class="text">Files</p>
         </li>
-        <li data-nav-links id="plans">
+        <li class="nav-link p-mx-1 p-wx-2">
+          <div
+            class="icon-wraper mr-2"
+            data-icon-wraper="nav-icons/plans"
+          ></div>
           <p class="text">Plans</p>
         </li>
       </ul>
     </nav>
-    <header>
-      <div class="search" data-search-bar>
-
-        <input type="text" aria-placeholder="Search Keyword">
+    <header class="p-2">
+      <div class="search-bar m-0 px-2 py-1 p-mx-3 p-my-2">
+        <div class="icon-wraper mr-m-2" data-icon-wraper="search"></div>
+        <input type="text" placeholder="Search Keyword" />
       </div>
-      <div class="user-info">
-        
+      <div class="user-menu">
+        <div class="notification mr-4">
+          <div class="bell" data-icon-wraper="notification-2"></div>
+          <span class="ms-counter"> 23 </span>
+        </div>
+        <div class="avatar" data-icon-wraper="user-avatar"></div>
       </div>
     </header>
-    <main id="screen">
+    <main id="screen" class="dashboard p-2">
       <h1 class="screen-title">Dashboard</h1>
-      <div class="widgets"></div>
+      <div class="widgets">
+        <div class="widget p-2 p-w-3 bg-gray">
+          <div class="box user-info">
+            <div>
+              <div class="widget-title">
+                <h4 class="title">Welcome</h4>
+                <p clas="user-name">Oumar</p>
+              </div>
+              <div class="asid-img-r" data-icon-wraper="referral-icon"></div>
+            </div>
+            <div>
+            <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <script src="JS/app.js" defer></script>
   </body>
