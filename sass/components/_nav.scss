@@ -1,0 +1,73 @@
+@use "../helpers/_mixins.sass" as *;
+.nav {
+  grid-row: 1/-1;
+  box-shadow: 15px 16px 40px -32px rgba(0, 0, 0, 0.8);
+  min-height: 100vh;
+  .logo {
+    text-align: center;
+    font-size: 1.1rem;
+    position: relative;
+  }
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    li {
+      overflow: hidden;
+      box-sizing: content-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding-block: 5px;
+      cursor: pointer;
+      transition: var(--tran-d);
+      &:hover {
+        background-color: var(--gray);
+      }
+      .icon-wraper {
+        width: 25px;
+        min-width: 20px;
+      }
+      .text {
+        display: none;
+      }
+    }
+  }
+  // media quaries
+  @include media("tablet") {
+    .logo {
+      font-size: 1.8rem;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -0.25em;
+        transform: translateX(-50%);
+        background-color: var(--main-clr, #000);
+      }
+      &::before {
+        width: 1.8em;
+        height: 2px;
+        border-radius: 3px;
+      }
+      &::after {
+        width: 0.3em;
+        height: 0.3em;
+        box-shadow: 0 0 0 0.14em var(--bg-clr);
+        border-radius: 100%;
+        transform: translate(-50%, calc(50% - 1px));
+      }
+    }
+    .nav-links {
+      li {
+        justify-content: flex-start;
+        padding-block: 10px;
+        .text {
+          display: block;
+        }
+      }
+    }
+  }
+}

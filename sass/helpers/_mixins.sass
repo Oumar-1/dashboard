@@ -1,4 +1,3 @@
-
 @mixin media($screen)
   @if ($screen == tablet)
     @media (min-width:768px)
@@ -8,3 +7,67 @@
       @content
   @else
     @error "this screen #{$screen} name is invalid"
+
+// class generator 
+/// @param $prop ,$cls, $list $cuts
+/// @content $prop is the property name
+/// @content $cls is for the class name or the shorcut of the property
+/// @content $list list of values for 3 media screens (mobile,tablet,wide) the first parametter is the default(mobile)
+/// @content $cuts is for values shortcuts for example 
+/// text-align you put class name as txt and you want the values for (center,start,end) by default it just gonna print the value as class name addition
+/// like txt-center {text-align:center} text-start{text-align:start}
+/// you can avoid that by pass shorcuts for those addition values like (c,s,e) and that will compile to
+// txt-c{text-align:center} txt-s{text-align:start} txt-e{text-align:end}
+
+@mixin classGenerator($prop,$cls,$list,$cuts:())
+
+  // error hadaling
+  @if length($list) < 1
+    @error "pass list as values" type-of($list)
+  @if length($cuts) > 0 and length($cuts) < length($list)
+    @error "list of values and shorcuts  must be equavilant"
+
+  @each $value in $list
+    @if length($cuts) > 0
+      .#{$cls}-#{nth($cuts,index($list,$value))}
+        #{$prop}: $value
+    @else
+      .#{$cls}-#{$value}
+        #{$prop}: $value
+
+// generate spaces
+// this mixin is for generate padding and margin at least for now 
+///@param $add for media queries
+/// $spaces for padding and margin values 
+/// $spaceNames for naming values for example 0 to 0 and 0.3124 to 1, and 0.625 to 2 and so on Note. that $spaces and $ spaceNames must be equivelant and this mixin work with classGenerator mixin 
+/// $dis for dimenstions like top right and left exc.... 
+/// $propes for properties 
+/// $clsShorts for classes short hands 
+$spaces: (0, 0.3125rem, 0.625rem, 0.9375rem, 1.25rem, 1.5rem,2rem)
+$spaceNames: (0, 1, 2, 3, 4, 5,6)
+$dis: (top:t, right:r, bottom:b, left:l,inline:x,block:y)
+
+@mixin genSpace($add: null)
+  @if $add != null
+    $add: -$add
+  $propes: (padding, margin)
+  $clsShorts: (p, m)
+  @for $i from 1 to length($propes) + 1
+    $prop: nth($propes, $i)
+    $cls: nth($clsShorts,$i)
+    @include classGenerator($prop,#{$cls+$add or ""},$spaces,$spaceNames)
+    @if $add != null
+    @each $val,$clsn in $dis
+      $prop2: $prop + -$val
+      $cls2: $cls+$clsn
+
+      @include classGenerator($prop2,$cls2+$add or "",$spaces,$spaceNames)
+
+// grid system
+
+@mixin grid($cls:grid,$min:auto,$max:1fr)
+  $values: (auto-fit,auto-fill,1,2,3,4,5)
+  $shortHands: (fit,fill,1,2,3,4,5)
+  @each $value in  $values
+    .#{$cls}-#{nth($shortHands,index($values,$value))}
+      grid-template-columns: repeat($value, minmax($min,$max))

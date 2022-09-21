@@ -1,7 +1,15 @@
 // helpers functions and mixins
-@use "./global-rules";
-@use "./screens-styles/_dashboard";
+@use "./helpers/global-rules";
 @use "./helpers/mixins";
-@use "./helpers/reuseble-classes";
-// screens
-@use "nav";
+// components
+@use "components/nav";
+@use "components/header";
+
+// Screens 
+@use "./screens-styles/_dashboard";
+
+
+
+// animations
+
+@use "./helpers/animations"

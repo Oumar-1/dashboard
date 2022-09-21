@@ -1,0 +1,32 @@
+/* animations  */
+
+// blinking animation
+@keyframes blink {
+  0% {
+    opacity: var(--blink-0, 0);
+  }
+  50% {
+    opacity: var(--blink-50, 0.5);
+  }
+  100% {
+    opacity: var(--blink-100, 1);
+  }
+}
+
+// swinging
+@keyframes swinging {
+  0% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-15deg);
+  }
+  40%,
+  80%{
+    transform: rotate(30deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}

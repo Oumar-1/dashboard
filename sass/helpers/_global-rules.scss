@@ -1,0 +1,60 @@
+@use "./_mixins.sass" as *;
+:root {
+  --main-clr: #000;
+  --gray: #eeeeee;
+  --danger-clr: #e74c3c;
+  --bg-clr: #fff;
+  --bg-secondary: #f2f5fc;
+  // transition ;
+  --tran-d: 400ms;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--bg-clr);
+  margin: 0;
+  color: var(--main-clr);
+  font-family: sans-serif;
+  height: 400vh;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 50px 1fr;
+  @include media("tablet") {
+    grid-template-columns: 130px 1fr;
+  }
+  @include media("wide") {
+    grid-template-columns: 170px 1fr;
+  }
+}
+a {
+  color: inhrit;
+  text-decoration: none;
+}
+button {
+  border: none;
+}
+svg {
+  width: 100%;
+  max-width: 100%;
+}
+img{
+  max-width: 100%;
+}
+[data-icon-wraper] {
+  max-width: 60px;
+}
+h1{
+  position:relative;
+  margin-bottom: 3rem;
+  &::before{
+    content: "";
+    width: 60px;
+    height:3px;
+    border-radius: 60px;
+    background-color: currentcolor;
+    position:absolute;
+    left: 0;
+    bottom: -8px
+  }
+}
