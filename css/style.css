@@ -1,9 +1,10 @@
 :root {
   --main-clr: #000;
+  --gray: #eeeeee;
+  --danger-clr: #e74c3c;
   --bg-clr: #fff;
-  --bg-secondary: #9ad0d4;
-  --gray: hsl(228, 60%, 96%);
-  --tran-d: 400ms ;
+  --bg-secondary: #f2f5fc;
+  --tran-d: 400ms;
 }
 
 * {
@@ -18,7 +19,7 @@ body {
   height: 400vh;
   display: grid;
   grid-template-columns: 70px 1fr;
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: 50px 1fr;
 }
 @media (min-width: 768px) {
   body {
@@ -40,16 +41,32 @@ button {
   border: none;
 }
 
-.p-5 {
-  padding: 5px;
+svg {
+  width: 100%;
+  max-width: 100%;
 }
 
-.p-10 {
-  padding: 10px;
+img {
+  max-width: 100%;
 }
 
-.p-15 {
-  padding: 15px;
+[data-icon-wraper] {
+  max-width: 60px;
+}
+
+h1 {
+  position: relative;
+  margin-bottom: 3rem;
+}
+h1::before {
+  content: "";
+  width: 60px;
+  height: 3px;
+  border-radius: 60px;
+  background-color: currentcolor;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
 }
 
 .nav {
@@ -59,32 +76,11 @@ button {
 }
 .nav .logo {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   position: relative;
-  margin-bottom: 1.3em;
-}
-.nav .logo::before, .nav .logo::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -0.25em;
-  transform: translateX(-50%);
-  background-color: var(--main-clr, #000);
-}
-.nav .logo::before {
-  width: 1.8em;
-  height: 2px;
-}
-.nav .logo::after {
-  width: 0.3em;
-  height: 0.3em;
-  box-shadow: 0 0 0 3px var(--bg-clr);
-  border-radius: 100%;
-  transform: translate(-50%, calc(50% - 1px));
 }
 .nav .nav-links {
   list-style: none;
-  padding: 0;
   display: flex;
   flex-direction: column;
 }
@@ -102,23 +98,36 @@ button {
 .nav .nav-links li:hover {
   background-color: var(--gray);
 }
+.nav .nav-links li .icon-wraper {
+  width: 25px;
+  min-width: 20px;
+}
 .nav .nav-links li .text {
   display: none;
 }
-.nav .nav-links .icon-holder {
-  width: 25px;
-  height: 25px;
-  height: max-content;
-  overflow: hidden;
-}
-.nav .nav-links .icon-holder svg {
-  min-width: 100%;
-  max-width: 100%;
-  transition-duration: var(--tran-d);
-}
 @media (min-width: 768px) {
   .nav .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+  }
+  .nav .logo::before, .nav .logo::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -0.25em;
+    transform: translateX(-50%);
+    background-color: var(--main-clr, #000);
+  }
+  .nav .logo::before {
+    width: 1.8em;
+    height: 2px;
+    border-radius: 3px;
+  }
+  .nav .logo::after {
+    width: 0.3em;
+    height: 0.3em;
+    box-shadow: 0 0 0 0.14em var(--bg-clr);
+    border-radius: 100%;
+    transform: translate(-50%, calc(50% - 1px));
   }
   .nav .nav-links li {
     justify-content: flex-start;
@@ -126,7 +135,132 @@ button {
   }
   .nav .nav-links li .text {
     display: block;
-    margin-left: 10px;
+  }
+}
+
+header {
+  background-color: var(--br-clr);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .search-bar {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--bg-secondary);
+  border-radius: 0.3em;
+  width: fit-content;
+  box-sizing: content-box;
+  /* the initial values for width and opacity */
+  --input-width: 0;
+  --input-opacity: 0;
+  /* and this the values when hover and focus on the input */
+  /* this is what i call css hack */
+  --input-width-to: 100px;
+  --input-opacity-to: 1;
+}
+header .search-bar:hover {
+  --input-width: var(--input-width-to);
+  --input-opacity: var(--input-opacity-to);
+}
+header .search-bar input {
+  background-color: transparent;
+  border: none;
+  transition-duration: var(--tran-d);
+  outline: none;
+  font-weight: 100;
+  margin-left: 10px;
+  width: var(--input-width);
+  opacity: var(--input-opacity);
+}
+header .search-bar input:focus {
+  --input-width: var(--input-width-to);
+  --input-opacity: var(--input-opacity-to);
+}
+header .search-bar input::placeholder {
+  font-size: 0.8em;
+}
+header .search-bar .icon-wraper {
+  width: 18px;
+  min-width: 18px;
+}
+@media (min-width: 768px) {
+  header .search-bar {
+    --input-width: 180px;
+    --input-opacity: 1;
+    --input-width-to: 180px;
+    font-size: 1.3rem;
+  }
+}
+header .user-menu {
+  display: inline-flex;
+}
+header .user-menu .notification {
+  position: relative;
+  width: fit-content;
+  cursor: pointer;
+}
+header .user-menu .notification .bell {
+  transform-origin: top center;
+  width: 30px;
+}
+header .user-menu .notification .bell .waves {
+  opacity: 0;
+}
+header .user-menu .notification .bell:hover {
+  animation: swinging 1s forwards alternate;
+}
+header .user-menu .notification .bell:hover .waves {
+  animation: blink var(--tran-d) forwards alternate 3 steps(5);
+}
+header .user-menu .notification .ms-counter {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  transform: translate(40%, -15%);
+  font-weight: 800;
+  border-radius: 50%;
+  background-color: var(--danger-clr);
+  color: #ecf0f1;
+  font-size: max(0.8vw, 0.55em);
+  padding: 3px;
+}
+header .user-menu .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.dashboard {
+  background-color: var(--bg-secondary);
+}
+
+/* animations  */
+@keyframes blink {
+  0% {
+    opacity: var(--blink-0, 0);
+  }
+  50% {
+    opacity: var(--blink-50, 0.5);
+  }
+  100% {
+    opacity: var(--blink-100, 1);
+  }
+}
+@keyframes swinging {
+  0% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-15deg);
+  }
+  40%, 80% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
