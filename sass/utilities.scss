@@ -1,0 +1,40 @@
+@use "helpers/mixins" as *;
+@use "helpers/colors" as *;
+// mobile utilitise
+
+/* mobile */
+/* text alignment */
+@mixin text($className) {
+  @include classGenerator(
+    text-align,
+    $className,
+    (center, start, end),
+    (c, s, e)
+  );
+}
+@include text(txt);
+/* padding & margin */
+@include genSpace();
+/* grid system */
+@include grid();
+/* displayes */
+@include classGenerator(display,d,(block,flex,grid,inline,inline-block,),(b,f,g,in,inb));
+/* tablet */
+@include media(tablet) {
+  @include text(txt-m);
+  @include genSpace(m);
+}
+/* wide screens */
+@include media(wide) {
+  @include text(txt-w);
+  @include genSpace(w);
+}
+
+/*colors and background*/
+@each $name, $value in $colors {
+  @include classGenerator(color, clr, (#{$value}), (#{$name}));
+}
+@each $name, $value in $backgrounds {
+  @include classGenerator(background-color, bg, (#{$value}), (#{$name}));
+}
+// wide screens utilitise
