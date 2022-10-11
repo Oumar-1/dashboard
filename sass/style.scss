@@ -1,15 +1,11 @@
-// helpers functions and mixins
+/* components */
 @use "./helpers/global-rules";
-@use "./helpers/mixins";
-// components
-@use "components/nav";
-@use "components/header";
+@use "./helpers/components";
+@use "./helpers/animations";
 
 // Screens 
 @use "./screens-styles/_dashboard";
+@use "components/nav";
+@use "components/header";
 
 
-
-// animations
-
-@use "./helpers/animations"

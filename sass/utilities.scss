@@ -1,40 +1,47 @@
 @use "helpers/mixins" as *;
-@use "helpers/colors" as *;
-// mobile utilitise
+@use "helpers/variables" as *;
+@use "sass:map";
 
-/* mobile */
-/* text alignment */
-@mixin text($className) {
-  @include classGenerator(
-    text-align,
-    $className,
-    (center, start, end),
-    (c, s, e)
-  );
-}
-@include text(txt);
-/* padding & margin */
-@include genSpace();
-/* grid system */
-@include grid();
-/* displayes */
-@include classGenerator(display,d,(block,flex,grid,inline,inline-block,),(b,f,g,in,inb));
-/* tablet */
-@include media(tablet) {
-  @include text(txt-m);
-  @include genSpace(m);
-}
-/* wide screens */
-@include media(wide) {
-  @include text(txt-w);
-  @include genSpace(w);
+$all-medias: ();
+$non-medias: ();
+$custom-medias: ();
+
+// separate medias into 3 different types
+// 1 non-medias 2 all-medias 3 costume-medias
+@each $rule, $properties in $rules {
+  $mediaState: map.get($properties, medias);
+
+  @if $mediaState == true or $mediaState == null {
+    $non-medias: map.set($non-medias, $rule, $properties);
+    $all-medias: map.set($all-medias, $rule, $properties);
+  } @else if ($mediaState == false) {
+    $non-medias: map.set($non-medias, $rule, $properties);
+  } @else if (type-of($mediaState) == map) and length($mediaState) > 0 {
+    $custom-medias: map.set($custom-medias, $rule, $properties);
+  } @else {
+    @error "#{ $mediaState } must be a map of media and its shorthand example (310,sm) wish 310 is the media and sm is its class ";
+  }
 }
 
-/*colors and background*/
-@each $name, $value in $colors {
-  @include classGenerator(color, clr, (#{$value}), (#{$name}));
+// generate for non-medias
+@include properties-generator($non-medias);
+// generate classes for default-medias
+@each $name, $break in $break-points {
+  @include media($name) {
+    $media-cls: - str-slice($name, 0, 1);
+    /// @param $rule $sr
+    /// $rule contains the rule name like padding or margin extra...
+    /// $st contains the structure of the property
+    @include properties-generator($all-medias, $media-cls);
+  }
 }
-@each $name, $value in $backgrounds {
-  @include classGenerator(background-color, bg, (#{$value}), (#{$name}));
+
+// costume medias
+@each $prop, $struct in $custom-medias {
+  $medias: map-get($struct, medias);
+  @each $m, $s in $medias {
+    @media (min-width:#{$m}px) {
+      @include properties-generator(($prop:$struct), -$s);
+    }
+  }
 }
-// wide screens utilitise
