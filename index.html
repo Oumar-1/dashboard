@@ -16,7 +16,11 @@
       rel="stylesheet"
     />
     <!-- favicon -->
-    <link rel="shortcut icon" href="imgs/icons/favicon.ico" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="imgs/Global_icons/favicon.ico"
+      type="image/x-icon"
+    />
     <!-- Style sheets -->
     <!-- normalize -->
     <link rel="stylesheet" href="css/normalize.css" />
@@ -26,99 +30,343 @@
   </head>
   <body>
     <nav class="nav">
-      <h3 class="logo mb-0 mt-2">Oumar</h3>
-      <ul class="nav-links p-2 m-0">
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/dashboard"
-          ></div>
-          <p class="text">Dashboard</p>
+      <h3 class="logo txt-c mb-0 mb-m-3 mt-2">Oumar</h3>
+    <ul class="nav-links d-f flxdir-c pos-rel p-2 m-0">
+      <li data-active class="pos-ab"></li>
+        <li
+          class="nav-link active of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg data-src="imgs/Global_icons/nav/dashboard.svg"></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Dashboard</p>
         </li>
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/settings"
-          ></div>
-          <p class="text">Settings</p>
+        <li
+          class="nav-link of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg data-src="imgs/Global_icons/nav/settings.svg"></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Settings</p>
         </li>
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/profile"
-          ></div>
-          <p class="text">Profile</p>
+        <li
+          class="nav-link of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg
+              stroke-width="15"
+              data-src="imgs/Global_icons/nav/profile.svg"
+            ></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Profile</p>
         </li>
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/projects"
-          ></div>
-          <p class="text">Projects</p>
+        <li
+          class="nav-link of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg data-src="imgs/Global_icons/nav/projects.svg"></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Projects</p>
         </li>
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/courses"
-          ></div>
-          <p class="text">Courses</p>
+        <li
+          class="nav-link of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg data-src="imgs/Global_icons/nav/courses.svg"></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Courses</p>
         </li>
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/friends"
-          ></div>
-          <p class="text">Friends</p>
+        <li
+          class="nav-link of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg data-src="imgs/Global_icons/nav/friends.svg"></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Friends</p>
         </li>
-
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/files"
-          ></div>
-          <p class="text">Files</p>
+        <li
+          class="nav-link of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg data-src="imgs/Global_icons/nav/files.svg"></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Files</p>
         </li>
-        <li class="nav-link p-mx-1 p-wx-2">
-          <div
-            class="icon-wraper mr-2"
-            data-icon-wraper="nav-icons/plans"
-          ></div>
-          <p class="text">Plans</p>
+        <li
+          class="nav-link of-hd rad-1 justify-c align-c justify-t-s -c p-1 px-w-2 d-f"
+        >
+          <div class="icon-wraper">
+            <svg data-src="imgs/Global_icons/nav/plans.svg"></svg>
+          </div>
+          <p class="ml-2 d-none d-t-b text">Plans</p>
         </li>
       </ul>
     </nav>
     <header class="p-2">
       <div class="search-bar m-0 px-2 py-1 p-mx-3 p-my-2">
-        <div class="icon-wraper mr-m-2" data-icon-wraper="search"></div>
+        <div class="icon-wraper mr-m-2">
+          <svg data-src="imgs/Global_icons/header/search.svg"></svg>
+        </div>
         <input type="text" placeholder="Search Keyword" />
       </div>
-      <div class="user-menu">
+      <div class="user-menu d-f align-c">
         <div class="notification mr-4">
-          <div class="bell" data-icon-wraper="notification-2"></div>
-          <span class="ms-counter"> 23 </span>
+          <div class="bell">
+            <svg data-src="imgs/Global_icons/header/notification.svg"></svg>
+          </div>
+          <span class="ms-counter bg-red clr-primery rad-50 txt-c"> 23 </span>
         </div>
-        <div class="avatar" data-icon-wraper="user-avatar"></div>
+        <div class="user-logo">
+          <svg data-src="imgs/Global_icons/user-avatar.svg"></svg>
+        </div>
       </div>
     </header>
-    <main id="screen" class="dashboard p-2">
+    <main id="screen" class="dashboard p-2 bg-secondary">
       <h1 class="screen-title">Dashboard</h1>
-      <div class="widgets">
-        <div class="widget p-2 p-w-3 bg-gray">
-          <div class="box user-info">
-            <div>
-              <div class="widget-title">
-                <h4 class="title">Welcome</h4>
-                <p clas="user-name">Oumar</p>
-              </div>
-              <div class="asid-img-r" data-icon-wraper="referral-icon"></div>
+      <div class="widgets col-1 col-w-2 col-xl-3 d-g gap-2">
+        <div class="widget of-hd bg-primery rad-2 pb-2 txt-c txt-t-s">
+          <div class="d-g col-1 col-t-2 px-2 bg-gray py-5 pb-t-0">
+            <div class="mb-4 txt-transform-cap">
+              <h4 class="title mb-1 fs-4 fs-t-5 fw-8">Welcome</h4>
+              <p class="m-0 clr-darkgray fs-3 fw-6">Oumar</p>
             </div>
-            <div>
-            <div></div>
+            <div class="d-none d-t-b">
+              <svg data-src="imgs/Dashboard/icons/referral-icon.svg"></svg>
+            </div>
+          </div>
+          <div>
+            <div class="icon-wraper mx-auto ml-t-3 user-logo">
+              <svg data-src="imgs/Global_icons/user-avatar.svg"></svg>
+            </div>
+            <ul
+              class="d-g col-1 col-t-3 justify-sr align-c p-4 px-t-2 txt-c user-statistics d-f flxdir-c align-c"
+              mb-4
+            >
+              <li class="txt-c mb-4 mb-t-0">
+                <h3 class="fw-4 fs-3 mb-t-2">Oumar Mouhamed</h3>
+                <p class="m-0 fs-1 clr-darkgray fw-4 fs-3">Developer</p>
+              </li>
+              <li class="txt-c mb-4 mb-t-0">
+                <h3 class="fw-4 mb-t-2">80</h3>
+                <p class="m-0 fs-1 clr-darkgray fw-4 fs-3">Projects</p>
+              </li>
+              <li class="txt-c">
+                <h3 class="fw-4 mb-t-2">&dollar;5800</h3>
+                <p class="m-0 fs-1 clr-darkgray fw-4 fs-3">Earned</p>
+              </li>
+            </ul>
+              <a class="btn ml-auto d-b px-2 py-1 mr-2 bg-blue clr-primery" href="#" data-profile-link>profile</a>
+          </div>
+        </div>
+        <div class="widget of-hd p-3 bg-primery rad-2">
+          <div class="mb-4 txt-transform-cap">
+            <h4 class="title mb-2 fs-5 fw-6">Quick Draft</h4>
+            <p class="m-0 clr-darkgray fs-3 fw-4 fs-2">
+              write a draft for your idea
+            </p>
+          </div>
+          <form>
+            <input
+              type="text"
+              class="bg-gray d-b rad-1 p-2 mb-4"
+              placeholder="Title"
+            />
+            <textarea
+              placeholder="Your Thoughts"
+              class="text-aria p-2 d-b bg-gray rad-1 mb-3"
+            ></textarea>
+            <input class="btn bg-blue ml-auto d-b" type="submit" value="save" />
+          </form>
+        </div>
+        <div class="widget of-hd p-3 bg-primery rad-2">
+          <div class="mb-4 txt-transform-cap">
+            <h4 class="title mb-2 fs-5 fw-6">Year Target</h4>
+            <p class="m-0 clr-darkgray fs-3 fw-4 fs-2">
+              current year goals and progress
+            </p>
+          </div>
+          <div class="goals">
+            <div class="goal d-f align-c mb-3">
+              <div class="icon-wraper flx-center rad-1 of-hd mr-3">
+                <svg
+                  data-src="imgs/Dashboard/icons/year-goals/dollar-sign.svg"
+                ></svg>
+              </div>
+              <div>
+                <p class="mb-1 clr-darkgray m-0 fs-2">money</p>
+                <span class="fw-6 goal-count clr-dark">&dollar;20.000</span>
+                <span data-year-progress="40" class="progress d-b mt-2 rad-2">
+                  <span
+                    data-progress-tracker="40"
+                    class="progress-fill d-b fw-6"
+                  ></span>
+                </span>
+              </div>
+            </div>
+            <div class="goal d-f align-c mb-3">
+              <div class="icon-wraper flx-center rad-1 of-hd mr-3">
+                <svg
+                  data-src="imgs/Dashboard/icons/year-goals/code-sign.svg"
+                ></svg>
+              </div>
+              <div>
+                <p class="mb-1 clr-darkgray m-0 fs-2">projects</p>
+                <span class="fw-6 goal-count clr-dark">24</span>
+                <span data-year-progress="40" class="progress d-b mt-2 rad-2"
+                  ><span
+                    data-progress-tracker="55"
+                    class="progress-fill d-b fw-6"
+                  ></span>
+                </span>
+              </div>
+            </div>
+            <div class="goal d-f align-c mb-3">
+              <div class="icon-wraper flx-center rad-1 of-hd mr-3">
+                <svg data-src="imgs/Dashboard/icons/year-goals/team.svg"></svg>
+              </div>
+              <div>
+                <p class="mb-1 clr-darkgray m-0 fs-2">team</p>
+                <span class="fw-6 goal-count">12</span>
+                <span data-year-progress="40" class="progress d-b mt-2 rad-2"
+                  ><span
+                    data-progress-tracker="75"
+                    class="progress-fill d-b fw-6"
+                  ></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="widget of-hd p-3 bg-primery rad-2">
+          <div class="mb-4 txt-transform-cap">
+            <h4 class="title mb-2 fs-5 fw-6">tickets statistics</h4>
+            <p class="m-0 clr-darkgray fs-3 fw-4 fs-2">
+              everything about support tickets
+            </p>
+          </div>
+          <div class="tickets txt-c d-g col-m-2 gap-4">
+            <div class="statistic d-f flxdir-c align-c rad-2 p-2">
+              <div class="icon-wraper clr-yellow mb-2">
+                <svg data-src="imgs/Dashboard/icons/tickets/list.svg"></svg>
+              </div>
+              <div>
+                <h4 data-total-tickets class="fw-8 fs-4 mb-1">2500</h4>
+                <p class="txt-transform-cap clr-darkgray fs-2">Total</p>
+              </div>
+            </div>
+            <div class="statistic d-f flxdir-c align-c rad-2 p-2">
+              <div class="icon-wraper clr-blue mb-2">
+                <svg data-src="imgs/Dashboard/icons/tickets/pending.svg"></svg>
+              </div>
+              <div>
+                <h4 data-pending-tickets class="fw-8 fs-4 mb-1">500</h4>
+                <p class="txt-transform-cap clr-darkgray fs-2">Pending</p>
+              </div>
+            </div>
+            <div class="statistic d-f flxdir-c align-c rad-2 p-2">
+              <div class="icon-wraper clr-green mb-2">
+                <svg data-src="imgs/Dashboard/icons/tickets/done.svg"></svg>
+              </div>
+              <div>
+                <h4 data-solved-tickets class="fw-8 fs-4 mb-1">1900</h4>
+                <p class="txt-transform-cap clr-darkgray fs-2">Solved</p>
+              </div>
+            </div>
+            <div class="statistic d-f flxdir-c align-c rad-2 p-2">
+              <div class="icon-wraper clr-red mb-2">
+                <svg
+                  data-src="imgs/Dashboard/icons/tickets/box-cross.svg"
+                ></svg>
+              </div>
+              <div>
+                <h4 data-closed-tickets class="fw-8 fs-4 mb-1">100</h4>
+                <p class="txt-transform-cap clr-darkgray fs-2">closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="widget of-hd p-3 bg-primery rad-2">
+          <div class=" txt-transform-cap">
+            <h4 class="title fs-5 fw-6">latest news</h4>
+          </div>
+          <div class="latest-news">
+            <div class="news d-f  align-c py-3">
+              <div class="img-wraper mr-3">
+                <img src="imgs/Dashboard/imgs/test.jpg" />
+              </div>
+              <div>
+                <div class="text txt-transform-cap">
+                  <h4 class="mb-2 fs-3">created sass section</h4>
+                  <p class="description clr-darkgray fs-2 ">
+                    new sass examples & tutorials
+                  </p>
+                </div>
+              </div>
+              <span
+                data-news-date=""
+                class="bg-lightgray clr-dark p-1 rad-2 d-b fs-1 fs-t-2 ml-auto"
+                >3 Days Ago</span
+              >
+            </div>
+            <div class="news d-f  align-c py-3">
+              <div class="img-wraper mr-3">
+                <img src="imgs/Dashboard/imgs/test-2.jpg" />
+              </div>
+              <div>
+                <div class="text txt-transform-cap">
+                  <h4 class="mb-2 fs-3">changed the design</h4>
+                  <p class="description clr-darkgray fs-2 ">
+                    a brand new website design
+                  </p>
+                </div>
+              </div>
+              <span
+                data-news-date=""
+                class="bg-lightgray clr-dark p-1 rad-2 d-b fs-1 fs-t-2 ml-auto"
+                >1 Days Ago</span
+              >
+            </div>
+            <div class="news d-f  align-c py-3">
+              <div class="img-wraper mr-3">
+                <img src="imgs/Dashboard/imgs/test-3.jpg" />
+              </div>
+              <div>
+                <div class="text txt-transform-cap">
+                  <h4 class="mb-2 fs-3">team incresed</h4>
+                  <p class="description clr-darkgray fs-2 ">
+                    3 developers joinded the team
+                  </p>
+                </div>
+              </div>
+              <span
+                data-news-date=""
+                class="bg-lightgray clr-dark p-1 rad-2 d-b fs-1 fs-t-2 ml-auto"
+                >14 Days Ago</span
+              >
+            </div>
+            <div class="news d-f  align-c py-3">
+              <div class="img-wraper mr-3">
+                <img src="imgs/Dashboard/imgs/test-4.jpeg" />
+              </div>
+              <div>
+                <div class="text txt-transform-cap">
+                  <h4 class="mb-2 fs-3">added payment gateway</h4>
+                  <p class="description clr-darkgray fs-2 ">
+                    many new payment gateways added
+                  </p>
+                </div>
+              </div>
+              <span
+                data-news-date=""
+                class="bg-lightgray clr-dark p-1 rad-2 d-b fs-1 fs-t-2 ml-auto"
+                >1 year Ago</span
+              >
             </div>
           </div>
         </div>
       </div>
     </main>
-    <script src="JS/app.js" defer></script>
+    <script src="JS/app.js" type="text/javascript" defer></script>
+    <script src="JS/svg-loader.min.js" type="text/javascript" async></script>
   </body>
 </html>
