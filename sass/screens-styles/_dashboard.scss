@@ -1,3 +1,133 @@
+@use "../helpers/_mixins" as *;
 .dashboard {
-  background-color:var(--bg-secondary) ;
+  .user-logo {
+    outline: 2px solid var(--bg-primery);
+    margin-top: -35px;
+    transform: scale(1.5);
+    display: inline-block;
+  }
+  .user-statistics {
+    border-block: 2px solid var(--bg-gray);
+    width: 100%;
+  }
+  [data-profile-link]{
+    max-width: fit-content;
+  }
+  .goal {
+    &:first-child {
+      --progress-clr: var(--clr-blue);
+      .progress .progress-fill {
+        width: 40%;
+      }
+    }
+    &:nth-child(2) {
+      --progress-clr: var(--clr-yellow);
+      .progress .progress-fill {
+        width: 55%;
+      }
+    }
+    &:last-child {
+      --progress-clr: var(--clr-green);
+      .progress .progress-fill {
+        width: 75%;
+      }
+    }
+    .icon-wraper {
+      min-width: 70px;
+      min-height: 70px;
+      color: var(--progress-clr);
+      text-align: center;
+      // padding: 15px;
+      svg {
+        width: 35px;
+        height: 35px;
+        max-width: 35px;
+        max-height: 35px;
+      }
+      @include pseudo() {
+        background-color: currentColor;
+        opacity: 0.3;
+      }
+    }
+    & > :last-child {
+      flex-grow: 1;
+    }
+    .progress {
+      font-size: 0.625rem;
+      height: 4px;
+      @include pseudo() {
+        background-color: var(--progress-clr);
+        opacity: 0.5;
+        border-radius: 4px;
+      }
+      .progress-fill {
+        border-radius: 8px;
+        height: 100%;
+        width: 50%;
+        background-color: var(--progress-clr);
+        @include pseudo(
+          $left: unset,
+          $bottom: unset,
+          $content: attr(data-progress-tracker) "%"
+        ) {
+          transform: translate(50%, calc(-100% - 10px));
+          width: fit-content;
+          background-color: var(--progress-clr);
+          padding: 0.2em 0.4em;
+          color: white;
+          border-radius: 4px;
+        }
+        @include pseudo($left: unset, $bottom: unset, $side: "after ") {
+          transform: translate(50%, calc(-100% - 5.5px));
+          border-width: 5px 5px 0 5px;
+          border-color: var(--progress-clr) #0000 #0000 #0000;
+          border-style: solid;
+        }
+      }
+    }
+  }
+  .tickets .statistic {
+    outline: 1px solid var(--bg-darkgray);
+    .icon-wraper {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .latest-news {
+    .news {
+      position: relative;
+      cursor: pointer;
+      padding-inline:4px;
+      z-index: 2;
+      @include fill-animation($bg:rgba(0,0,0,.04),$index: -1);
+      @media (max-width: 411px) {
+        .description {
+          margin-bottom: 10px;
+        }
+        [data-news-date] {
+          position: absolute;
+          right: 0;
+          bottom: 5px;
+        }
+      }
+      position: relative;
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--bg-lightgray);
+      }
+    }
+
+    .img-wraper {
+      min-width: 70px;
+      width: 70px;
+      img {
+        aspect-ratio: 16/9;
+      }
+    }
+    [data-news-date] {
+      flex-shrink: 0;
+      @include media("tablet") {
+        font-size: 0.7em;
+      }
+    }
+  }
 }
