@@ -1,12 +1,12 @@
+@use "./variables" as *
+@use "sass:map"
 @mixin media($screen)
-  @if ($screen == tablet)
-    @media (min-width:768px)
-      @content
-  @else if ($screen == wide)
-    @media (min-width:992px)
-      @content
-  @else
-    @error "this screen #{$screen} name is invalid"
+  @if map-get($break-points,$screen) == null
+    @error "this screen '#{$screen}' name is not valid"
+  @each $name,$val in $break-points
+    @if ($screen == $name)
+      @media (min-width:$val)
+        @content
 
 // class generator 
 /// @param $prop ,$cls, $list $cuts
@@ -20,9 +20,8 @@
 // txt-c{text-align:center} txt-s{text-align:start} txt-e{text-align:end}
 
 @mixin classGenerator($prop,$cls,$list,$cuts:())
-
   // error hadaling
-  @if length($list) < 1
+  @if length($list) < 1 or type-of($list) != list
     @error "pass list as values" type-of($list)
   @if length($cuts) > 0 and length($cuts) < length($list)
     @error "list of values and shorcuts  must be equavilant"
@@ -35,39 +34,59 @@
       .#{$cls}-#{$value}
         #{$prop}: $value
 
-// generate spaces
-// this mixin is for generate padding and margin at least for now 
-///@param $add for media queries
-/// $spaces for padding and margin values 
-/// $spaceNames for naming values for example 0 to 0 and 0.3124 to 1, and 0.625 to 2 and so on Note. that $spaces and $ spaceNames must be equivelant and this mixin work with classGenerator mixin 
-/// $dis for dimenstions like top right and left exc.... 
-/// $propes for properties 
-/// $clsShorts for classes short hands 
-$spaces: (0, 0.3125rem, 0.625rem, 0.9375rem, 1.25rem, 1.5rem,2rem)
-$spaceNames: (0, 1, 2, 3, 4, 5,6)
-$dis: (top:t, right:r, bottom:b, left:l,inline:x,block:y)
+/// @param $map $class
+/// it takes a map of rules/properties and then turn them into classes
+/// $class able you to add aditional class name like media class
 
-@mixin genSpace($add: null)
-  @if $add != null
-    $add: -$add
-  $propes: (padding, margin)
-  $clsShorts: (p, m)
-  @for $i from 1 to length($propes) + 1
-    $prop: nth($propes, $i)
-    $cls: nth($clsShorts,$i)
-    @include classGenerator($prop,#{$cls+$add or ""},$spaces,$spaceNames)
-    @if $add != null
-    @each $val,$clsn in $dis
-      $prop2: $prop + -$val
-      $cls2: $cls+$clsn
+@mixin properties-generator($map,$class:null)
 
-      @include classGenerator($prop2,$cls2+$add or "",$spaces,$spaceNames)
+  @each $rule,$st in $map
 
-// grid system
+    $cls: map-get($st,class-name)
+    $values: map-get($st,values)
+    $keywords: map-get($st,values-keywords)
 
-@mixin grid($cls:grid,$min:auto,$max:1fr)
-  $values: (auto-fit,auto-fill,1,2,3,4,5)
-  $shortHands: (fit,fill,1,2,3,4,5)
-  @each $value in  $values
-    .#{$cls}-#{nth($shortHands,index($values,$value))}
-      grid-template-columns: repeat($value, minmax($min,$max))
+    /// if forget to add one of main lists 
+    @if $cls == null or $values == null or $keywords  == null
+      @error $cls $values $keywords "check out your properties intialization in $rules"
+
+    @include classGenerator($rule, $cls + $class, $values, $keywords)
+
+    // property dimenstion if it has
+    $dims: map.get($st , dimensions)
+    @if $dims != null and type-of($dims) == map
+      @each $dim in $dims
+        @include classGenerator($rule - nth($dim,1), $cls +nth($dim,2) + $class, $values, $keywords)
+
+/// @param(pseudo-element, content, position, dimensions..., parent-positon)
+/// create a "pseudo-element" 
+@mixin pseudo($side:"before",$content: "",$position: absolute,$top: 0,$right: 0,$bottom: 0,$left: 0,$parent-pos: relative)
+  /// add poisition relative in the parent element 
+  position: $parent-pos
+  /// creating a pseudo class
+  &::#{$side}
+    content: $content
+    position: $position
+    top: $top
+    right: $right
+    bottom: $bottom
+    left: $left
+    @content
+
+@mixin fill-animation($dir:left,$bg:rgba(0, 0, 0, 0.2),$pos:relative,$transition: 600ms,$index:unset)
+  position: $pos
+  &:hover::before
+    transform: scaleX(1)
+  &::before
+    content: ""
+    position: absolute
+    left: 0
+    width: 100%
+    height: 100%
+    right: 0
+    background-color: $bg
+    transform-origin: $dir
+    transform: scaleX(0)
+    transition: $transition
+    z-index: $index
+    @content
