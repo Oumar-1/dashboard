@@ -1,0 +1,51 @@
+// button component
+.btn
+  border-radius: 5px
+  padding: 0.3em 0.6em
+  border: none
+  cursor: pointer
+  color: #fff
+  text-transform: capitalize
+  position: relative
+  overflow: hidden
+  &::before
+    transition-duration: var(--tran-d)
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    transform-origin: left
+    transform: scaleX(0)
+    background-color: #0004
+    mix-blend-mode: overlay
+  &:hover,
+  &:focus
+    &::before
+      transform: scaleX(1)
+
+// center element childs using flex-box
+.flx-center
+  display: flex
+  justify-content: center
+  align-items: center
+
+// center element using position absolute 
+//(put position-relative on its parent)
+.pos-center
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)
+
+textarea
+  height: 200px
+  resize: none
+input[type="text"],
+textarea
+  width: 100%
+  border: none
+  outline: none
+  &:focus
+    outline: 1px solid rgba(0,0,0,.5)
