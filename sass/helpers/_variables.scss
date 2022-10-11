@@ -1,0 +1,253 @@
+//  Colors
+$colors: (
+  "primery": #fff,
+  "secondary": hsl(210, 40%, 95%),
+  "dark": #000,
+  "gray": #eee,
+  "darkgray": #666666,
+  "lightgray": #cccccc73,
+  "red": #c33428,
+  "green": #25ac5d,
+  "blue": #266ec9,
+  "yellow": #cb8114,
+);
+$font-size: (0.6em, 0.8em, 1em, 1.2em, 1.5em, 1.8em);
+// media queries
+$break-points: (
+  mobile: 411px,
+  tablet: 767px,
+  wide: 992px,
+);
+// gap spaces
+$spaces: (0, 0.3125rem, 0.625rem, 0.9375rem, 1.25rem, 1.5rem, 2rem);
+
+$font-names: ();
+@for $i from 1 to length($font-size) + 1 {
+  $font-names: append($font-names, $i);
+}
+
+$spaces-name: ();
+@for $i from 0 to length($spaces) {
+  $spaces-name: append($spaces-name, $i);
+}
+
+$clrs-names: ();
+$clrs-values: ();
+@each $clr, $value in $colors {
+  $clrs-names: append($clrs-names, $clr);
+  $clrs-values: append($clrs-values, $value);
+}
+
+// property-name (
+//  class-name : shortcut of the property ;
+//  values : list of values for the property;
+//  values-keywords: list of keywords for values (must be equal with values list )
+
+//  dimensions: a map of property dimensions contain dimension name and its shorthand and it's optinal
+
+//  medias: a map of medias break points and its shorthand (that mean the property will only work on those medias ) null or false means property applied for all medias and it's optinal
+//
+//)
+// rules map
+// a map of all utilitize properties
+$rules: (
+  padding: (
+    class-name: p,
+    values: $spaces,
+    values-keywords: $spaces-name,
+    dimensions: (
+      inline: x,
+      block: y,
+      top: t,
+      right: r,
+      left: l,
+      bottom: b,
+    ),
+  ),
+  margin: (
+    class-name: m,
+    values: append($spaces, auto),
+    values-keywords: append($spaces-name, auto),
+    dimensions: (
+      inline: x,
+      block: y,
+      top: t,
+      right: r,
+      left: l,
+      bottom: b,
+    ),
+  ),
+  text-align: (
+    class-name: txt,
+    values: (
+      center,
+      start,
+      end,
+    ),
+    values-keywords: (
+      c,
+      s,
+      e,
+    ),
+  ),
+  text-transform :(
+    class-name: txt-transform,
+    values: (
+      capitalize,
+      uppercase,
+    ),
+    values-keywords:(
+      cap,
+      up,
+    )
+  ),
+  font-size: (
+    class-name: fs,
+    values: $font-size,
+    values-keywords: $font-names,
+  ),
+  font-weight: (
+    class-name: fw,
+    values: (
+      100,
+      400,
+      600,
+      700,
+      800,
+    ),
+    values-keywords: (
+      1,
+      4,
+      6,
+      7,
+      8,
+    ),
+    medias: false,
+  ),
+  display: (
+    class-name: d,
+    values: (
+      none,
+      inline,
+      inline-block,
+      block,
+      flex,
+      grid,
+    ),
+    values-keywords: (
+      none,
+      in,
+      inb,
+      b,
+      f,
+      g,
+    ),
+  ),
+  color: (
+    class-name: clr,
+    values: $clrs-values,
+    values-keywords: $clrs-names,
+    medias: false,
+  ),
+  background-color: (
+    class-name: bg,
+    values: $clrs-values,
+    values-keywords: $clrs-names,
+  ),
+  grid-template-columns: (
+    class-name: col,
+    values: (
+      1fr,
+      1fr 1fr,
+      1fr 1fr 1fr,
+      repeat(4, minmax(0, 1fr)),
+      repeat(5, minmax(0, 1fr)),
+      repeat(auto-fill, minmax(max-content, 1fr)),
+      repeat(auto-fit, minmax(max-content, 1fr)),
+    ),
+    values-keywords: (
+      1,
+      2,
+      3,
+      4,
+      5,
+      fill,
+      fit,
+    ),
+    medias: (
+      411: m,
+      768: t,
+      992: w,
+      1200: xl,
+    ),
+  ),
+  flex-direction: (
+    class-name: flxdir,
+    values: (
+      row,
+      column,
+    ),
+    values-keywords: (
+      r,
+      c,
+    ),
+  ),
+  align-items: (
+    class-name: align,
+    values: (
+      center,
+      flex-start,
+      flex-end,
+    ),
+    values-keywords: (
+      c,
+      s,
+      e,
+    ),
+  ),
+  justify-content: (
+    class-name: justify,
+    values: (
+      center,
+      flex-start,
+      flex-end,
+      space-between,
+      space-around,
+    ),
+    values-keywords: (
+      c,
+      s,
+      e,
+      sb,
+      sr,
+    ),
+  ),
+  gap: (
+    class-name: gap,
+    values: 5px 10px 15px 20px 30px,
+    values-keywords: 1 2 3 4 5,
+    medias: false,
+  ),
+  border-radius: (
+    class-name: rad,
+    values: 4px 8px 16px 50% 100%,
+    values-keywords: 1 2 3 50 100,
+    medias: false,
+  ),
+  opacity: (
+    class-name: opacity,
+    values: 0 1 0.5,
+    values-keywords: 0 1 50,
+  ),
+  position: (
+    class-name: pos,
+    values: absolute relative,
+    values-keywords: ab rel,
+  ),
+  overflow: (
+    class-name: of,
+    values: hidden visible,
+    values-keywords: hd vb,
+    medias: false,
+  ),
+);
