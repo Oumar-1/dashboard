@@ -1,6 +1,6 @@
 @use "../helpers/_mixins.sass" as *;
 header {
-  background-color: var(--br-clr);
+  background-color: var(--br-primery);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,7 +52,6 @@ header {
     }
   }
   .user-menu {
-    display: inline-flex;
     .notification {
       position: relative;
       width: fit-content;
@@ -70,25 +69,16 @@ header {
           }
         }
       }
+      // massages counter
       .ms-counter {
         position: absolute;
         right: 0;
         top: 0;
-        text-align: center;
         transform: translate(40%, -15%);
         font-weight: 800;
-        border-radius: 50%;
-        background-color: var(--danger-clr);
-        color: #ecf0f1;
         font-size:max(0.8vw, 0.55em) ;
         padding: 3px;
       }
-    }
-    .avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 100%;
-      overflow: hidden;
     }
   }
 }
