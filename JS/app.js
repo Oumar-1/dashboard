@@ -16,14 +16,31 @@ function load_screen(path) {
       console.warn(error);
     });
 }
-var a = navLinksActive;
-var b = navLinks[0];
-let p = window.getComputedStyle(b).paddingTop;
 
-// a.style.top += `5px`;
+var p = window.getComputedStyle(navLinks[0]).paddingTop,
+  a = navLinksActive;
+// create 
+Object.defineProperties(a, {
+  ty: {
+    get() {
+      let style = window.getComputedStyle(this).transform;
+      return new WebKitCSSMatrix(style).m42;
+    },
+    set(val) {
+      return (this.style.transform = `translateY(${val}px)`);
+    },
+  },
+});
+a.ty = parseInt(p);
 
+calculateDistance(navLinks[3]);
+function calculateDistance(nextElement) {
+  let cury = a.getBoundingClientRect().top;
+  let nexty = nextElement.getBoundingClientRect().top;
+  return nexty - cury;
+}
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    // navLinksActive.
+    a.ty += calculateDistance(link) + parseInt(window.getComputedStyle(link).paddingTop)
   });
 });
