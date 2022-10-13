@@ -1,7 +1,6 @@
 const body = document.body;
 const screen = document.getElementById("screen");
 const navLinks = document.querySelectorAll(".nav-link");
-const navLinksActive = document.querySelector(".nav-links [data-active]");
 const searchBar = document.querySelector("[data-search-bar]");
 let iconsUsed = [];
 
@@ -17,30 +16,37 @@ function load_screen(path) {
     });
 }
 
-var p = window.getComputedStyle(navLinks[0]).paddingTop,
-  a = navLinksActive;
-// create 
-Object.defineProperties(a, {
-  ty: {
-    get() {
-      let style = window.getComputedStyle(this).transform;
-      return new WebKitCSSMatrix(style).m42;
-    },
-    set(val) {
-      return (this.style.transform = `translateY(${val}px)`);
-    },
-  },
-});
-a.ty = parseInt(p);
+(function () {
+  let holder = null;
 
-calculateDistance(navLinks[3]);
-function calculateDistance(nextElement) {
-  let cury = a.getBoundingClientRect().top;
-  let nexty = nextElement.getBoundingClientRect().top;
-  return nexty - cury;
-}
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    a.ty += calculateDistance(link) + parseInt(window.getComputedStyle(link).paddingTop)
+  const active = document.querySelector(".nav-links [data-active]");
+  // create an alias for transform:translateY() css property
+  Object.defineProperties(active, {
+    ty: {
+      get() {
+        let style = window.getComputedStyle(this).transform;
+        return new WebKitCSSMatrix(style).m42;
+      },
+      set(val) {
+        return (this.style.transform = `translateY(${val}px)`);
+      },
+    },
   });
-});
+
+  navLinks[0].classList.add("active");
+  holder = navLinks[0];
+  // move the active line to the currect active screen
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      active.ty += calculateDistance(link);
+      holder.classList.remove("active");
+      link.classList.add("active");
+      holder = link;
+    });
+  });
+  function calculateDistance(nextElement) {
+    let cury = active.getBoundingClientRect().top;
+    let nexty = nextElement.getBoundingClientRect().top;
+    return nexty - cury;
+  }
+})();
