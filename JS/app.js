@@ -3,7 +3,6 @@ const screen = document.getElementById("screen");
 const navLinks = document.querySelectorAll(".nav-link");
 const searchBar = document.querySelector("[data-search-bar]");
 let iconsUsed = [];
-load_screen()
 function load_screen(path) {
   if (!path || typeof path != "string") throw Error("specify path for screen");
   fetch("./" + path)
