@@ -8,36 +8,37 @@
     position: relative;
   }
   .nav-links {
-    [data-active]{
-      width: 2px;
-      height: 40px;
-      border-radius: 4px;
-
-      background-color: var(--bg-yellow);
+    [data-active] {
+      width: calc(100% - 0.3125rem);
+      height: 50px;
+      border-radius: 0 4px 4px 0 ;
+      background-color: rgba(0, 0, 0, 0.05);
+      top: 0;
+      right: 0;
+      transition: 600ms;
+      border-left: 2px solid var(--bg-yellow);
+      // &::before {
+      //   content: "";
+      //   border-radius: 8px;
+      //   width: 2px;
+      //   height: 100%;
+      //   display: block;
+      //   overflow: hidden;
+      //   background-color: var(--bg-yellow);
+      // }
     }
     .nav-link {
       box-sizing: content-box;
+      user-select: none;
       height: 40px;
       cursor: pointer;
-      // *:not(.icon-wraper, svg) {
-      //   transition-duration: 500ms;
-      // }
-      // &:hover{
-      //     color: white;
-      // }
-      @include fill-animation($bg:rgba(0, 0,0
-      ,0.05), $transition:350ms){
-        // z-index: -1
-      };
 
       .icon-wraper {
         width: 20px;
         min-width: 18px;
       }
     }
-
   }
-  // media quaries
   @include media("tablet") {
     .logo {
       font-size: 1.8rem;

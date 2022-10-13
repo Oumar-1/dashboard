@@ -10,7 +10,7 @@
     border-block: 2px solid var(--bg-gray);
     width: 100%;
   }
-  [data-profile-link]{
+  [data-profile-link] {
     max-width: fit-content;
   }
   .goal {
@@ -78,7 +78,7 @@
           border-radius: 4px;
         }
         @include pseudo($left: unset, $bottom: unset, $side: "after ") {
-          transform: translate(50%, calc(-100% - 5.5px));
+          transform: translate(50%, calc(-100% - 6px));
           border-width: 5px 5px 0 5px;
           border-color: var(--progress-clr) #0000 #0000 #0000;
           border-style: solid;
@@ -97,9 +97,9 @@
     .news {
       position: relative;
       cursor: pointer;
-      padding-inline:4px;
+      padding-inline: 4px;
       z-index: 2;
-      @include fill-animation($bg:rgba(0,0,0,.04),$index: -1);
+      @include fill-animation($bg: rgba(0, 0, 0, 0.04), $index: -1);
       @media (max-width: 411px) {
         .description {
           margin-bottom: 10px;
@@ -128,6 +128,23 @@
       @include media("tablet") {
         font-size: 0.7em;
       }
+    }
+  }
+  .latest-tasks {
+    .task {
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      }
+      &.removed {
+        opacity: 0.2;
+        text-decoration: line-through;
+      }
+    }
+    .icon-wraper {
+      margin-left: 8px;
+      width: 16px;
+      min-width: 16px;
+      cursor: pointer;
     }
   }
 }

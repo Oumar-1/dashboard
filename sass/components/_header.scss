@@ -26,8 +26,10 @@ header {
     input {
       background-color: transparent;
       border: none;
+      &:focus {
+        outline: none;
+      }
       transition-duration: var(--tran-d);
-      outline: none;
       font-weight: 100;
       margin-left: 10px;
       width: var(--input-width);
@@ -59,8 +61,8 @@ header {
       .bell {
         transform-origin: top center;
         width: 30px;
-        .waves{
-          opacity:0;
+        .waves {
+          opacity: 0;
         }
         &:hover {
           animation: swinging 1s forwards alternate;
@@ -76,7 +78,7 @@ header {
         top: 0;
         transform: translate(40%, -15%);
         font-weight: 800;
-        font-size:max(0.8vw, 0.55em) ;
+        font-size: max(0.8vw, 0.55em);
         padding: 3px;
       }
     }

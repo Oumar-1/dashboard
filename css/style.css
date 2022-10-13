@@ -31,7 +31,7 @@ body {
   color: var(--main-clr);
   font-family: "Open sans", sans-serif;
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 60px 1fr;
   grid-template-rows: 50px 1fr;
 }
 @media (min-width: 767px) {
@@ -87,6 +87,7 @@ h1::before {
 
 ul {
   list-style: none;
+  padding-left: 0;
 }
 
 .btn {
@@ -273,7 +274,7 @@ textarea:focus {
   right: 0;
   bottom: unset;
   left: unset;
-  transform: translate(50%, calc(-100% - 5.5px));
+  transform: translate(50%, calc(-100% - 6px));
   border-width: 5px 5px 0 5px;
   border-color: var(--progress-clr) #0000 #0000 #0000;
   border-style: solid;
@@ -337,6 +338,19 @@ textarea:focus {
     font-size: 0.7em;
   }
 }
+.dashboard .latest-tasks .task:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.dashboard .latest-tasks .task.removed {
+  opacity: 0.2;
+  text-decoration: line-through;
+}
+.dashboard .latest-tasks .icon-wraper {
+  margin-left: 8px;
+  width: 16px;
+  min-width: 16px;
+  cursor: pointer;
+}
 
 .nav {
   grid-row: 1/-1;
@@ -348,32 +362,20 @@ textarea:focus {
   position: relative;
 }
 .nav .nav-links [data-active] {
-  width: 2px;
-  height: 40px;
-  border-radius: 4px;
-  background-color: var(--bg-yellow);
+  width: calc(100% - 0.3125rem);
+  height: 50px;
+  border-radius: 0 4px 4px 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  top: 0;
+  right: 0;
+  transition: 600ms;
+  border-left: 2px solid var(--bg-yellow);
 }
 .nav .nav-links .nav-link {
   box-sizing: content-box;
+  user-select: none;
   height: 40px;
   cursor: pointer;
-  position: relative;
-}
-.nav .nav-links .nav-link:hover::before {
-  transform: scaleX(1);
-}
-.nav .nav-links .nav-link::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.05);
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: 350ms;
-  z-index: unset;
 }
 .nav .nav-links .nav-link .icon-wraper {
   width: 20px;
@@ -434,11 +436,13 @@ header .search-bar input {
   background-color: transparent;
   border: none;
   transition-duration: var(--tran-d);
-  outline: none;
   font-weight: 100;
   margin-left: 10px;
   width: var(--input-width);
   opacity: var(--input-opacity);
+}
+header .search-bar input:focus {
+  outline: none;
 }
 header .search-bar input:focus {
   --input-width: var(--input-width-to);
