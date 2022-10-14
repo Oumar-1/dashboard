@@ -351,6 +351,9 @@ textarea:focus {
   min-width: 16px;
   cursor: pointer;
 }
+.dashboard .latest-uploads .icon-wraper {
+  width: 30px;
+}
 
 .nav {
   grid-row: 1/-1;
