@@ -47,3 +47,25 @@ function load_screen(path) {
     });
   });
 })();
+
+// match the name of svg file to the name of its file-title
+(() => {
+  window.addEventListener("iconload", (e) => {
+    let svg = e.target.querySelector("[data-file-name]");
+    if (svg) {
+      let title = svg.closest("li").querySelector(".file-title").textContent;
+      var fileExtension = title.match(/\.\w+/g)[0].slice(1)
+      svg.textContent = fileExtension
+    }
+    // console.log(e.target.)
+  });
+  let allFileSvgs = document.querySelectorAll("[data-file-background]");
+  console.log(allFileSvgs);
+  allFileSvgs.forEach((e) => {
+    e.addEventListener((item) => {
+      if (item != undefined) {
+        item.onclick = () => (item.style.fill = "red");
+      }
+    });
+  });
+})();
